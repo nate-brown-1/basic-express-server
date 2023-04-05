@@ -38,13 +38,13 @@
     "no-trailing-spaces": "warn",
     "no-undefined": "off",
     "no-unused-vars": "off",
-    "quotes": [
-      "warn",
-      "single",
-      {
-        "allowTemplateLiterals": true
-      }
-    ],
+    // "quotes": [
+    //   "warn",
+    //   "single",
+    //   {
+    //     "allowTemplateLiterals": true
+    //   }
+    // ],
     "semi": "error"
   }
 }

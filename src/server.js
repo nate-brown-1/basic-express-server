@@ -20,25 +20,38 @@ app.use(logger);
 const validator = require('./middleware/validator');
 app.use(validator);
 
+// error handler modules
+const notFoundErrorHandler = require('./error-handlers/404');
+const serverErrorHandler = require('./error-handlers/500');
 
 // empty data array for later
 const data = [];
 
-app.get('/message', (request, response, next) => {
-  response.send(data);
+// person route
+app.get('/person', (request, response, next) => {
+  if ( validator(request.query.name) ) {
+    response.send(200, {'name': `${request.query.name}`});
+  }
 });
 
-app.post('/message', uncapitalizeMessage, (request, response, next) => {
-  data.push(request.query.message);
-  response.json(data);
+// app.get('/message', (request, response, next) => {
+//   response.send(data);
+// });
+
+// app.post('/message', uncapitalizeMessage, (request, response, next) => {
+//   data.push(request.query.message);
+//   response.json(data);
+// });
+
+// error 404 for bad routes
+app.get('*', (request, response, next) => {
+  notFoundErrorHandler();
 });
 
+// last chance, error 500
+app.use(serverErrorHandler);
 
-app.use(function (error, request, response, next) {
-  console.log(error);
-  response.status(500).send('Internal Server Error');
-});
-
+// export server object with app and start
 module.exports = {
   app,
   start: (port) => app.listen(port, () => {
