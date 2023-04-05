@@ -10,14 +10,15 @@ const uncapitalizeMessage = require('./uncapitalize/uncapitalizeMessage');
 const app = express();
 app.use(cors());
 
-const data = [];
-
-function logger (request, response, next) {
-  console.log('Express app hit!');
-  next();
-}
+const logger = require('./middleware/logger');
 app.use(logger);
 
+const validator = require('./middleware/validator');
+app.use(validator);
+
+
+
+const data = [];
 
 app.get('/message', (request, response, next) => {
   response.send(data);
@@ -34,11 +35,11 @@ app.use(function (error, request, response, next) {
   response.status(500).send('Internal Server Error');
 });
 
-// module.exports = {
-//   app,
-//   start: (port) => app.listen(port, () => {
-//     console.log(`Listening on ${port}`);
-//   })
-// };
+module.exports = {
+  app,
+  start: (port) => app.listen(port, () => {
+    console.log(`Listening on ${port}`);
+  })
+};
 
-module.exports = app;
+// module.exports = app;
