@@ -37,6 +37,7 @@
     "no-template-curly-in-string": "error",
     "no-trailing-spaces": "warn",
     "no-undefined": "off",
+    "no-unused-vars": "off",
     "quotes": [
       "warn",
       "single",
