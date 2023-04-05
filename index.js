@@ -1,10 +1,10 @@
 'use strict';
 
+// allow environmental variables
 require('dotenv').config();
+// get envs here to prevent Render deployment errors
 const port = process.env.PORT;
 
 const app = require('./src/server');
 
-app.listen(port, () => {
-  console.log(`Listening on ${port}`);
-});
+app.start(port);

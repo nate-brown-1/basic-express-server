@@ -1,23 +1,27 @@
 'use strict';
 
-require('dotenv').config();
-const port = process.env.PORT;
-
+// import and start express server
 const express = require('express');
-const cors = require('cors');
-const uncapitalizeMessage = require('./uncapitalize/uncapitalizeMessage');
-
 const app = express();
+
+// import cross origin resource sharing
+const cors = require('cors');
 app.use(cors());
 
+// import function from lab 01
+// this is only for sample purposes
+const uncapitalizeMessage = require('./uncapitalize/uncapitalizeMessage');
+
+// import logger module
 const logger = require('./middleware/logger');
 app.use(logger);
 
+// import validator module
 const validator = require('./middleware/validator');
 app.use(validator);
 
 
-
+// empty data array for later
 const data = [];
 
 app.get('/message', (request, response, next) => {
@@ -41,5 +45,3 @@ module.exports = {
     console.log(`Listening on ${port}`);
   })
 };
-
-// module.exports = app;
