@@ -34,9 +34,11 @@ app.use(function (error, request, response, next) {
   response.status(500).send('Internal Server Error');
 });
 
-module.exports = {
-  app,
-  start: (port) => app.listen(port, () => {
-    console.log(`Listening on ${port}`);
-  })
-};
+// module.exports = {
+//   app,
+//   start: (port) => app.listen(port, () => {
+//     console.log(`Listening on ${port}`);
+//   })
+// };
+
+module.exports = app;

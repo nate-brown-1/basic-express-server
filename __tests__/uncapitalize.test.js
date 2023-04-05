@@ -24,6 +24,6 @@ describe('Test uncapitalize middleware', () => {
     const next = jest.fn();
 
     uncapitalizeMessage(request, response, next);
-    expect(next).toHaveBeenCalledWith('No message attached');
+    expect(next).toHaveBeenCalledWith('No message attached!');
   });
 });
