@@ -4,9 +4,9 @@
 const express = require('express');
 const app = express();
 
-// import cross origin resource sharing
-const cors = require('cors');
-app.use(cors());
+// // import cross origin resource sharing
+// const cors = require('cors');
+// app.use(cors());
 
 // import function from lab 01
 // this is only for sample purposes
@@ -26,6 +26,11 @@ const serverErrorHandler = require('./error-handlers/500');
 
 // empty data array for later
 const data = [];
+
+
+app.get('/status', (request, response, next) => {
+  response.send(200, 'Great Job!');
+});
 
 // person route
 app.get('/person', (request, response, next) => {
