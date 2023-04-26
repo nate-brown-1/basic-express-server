@@ -8,7 +8,7 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 
-app.get('/ping', (request, response, next) => {
+app.get('/', (request, response, next) => {
   response.status(200).send('Test Passed! Great Job!');
 });
 
