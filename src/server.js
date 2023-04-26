@@ -4,9 +4,9 @@
 const express = require('express');
 const app = express();
 
-// // import cross origin resource sharing
-// const cors = require('cors');
-// app.use(cors());
+// import cross origin resource sharing
+const cors = require('cors');
+app.use(cors());
 
 // import function from lab 01
 // this is only for sample purposes
